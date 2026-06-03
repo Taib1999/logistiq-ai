@@ -1,0 +1,48 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String   @id @default(uuid())
+  username     String   @unique
+  name         String
+  role         String   // "Admin" | "Dispatcher" | "Chauffeur"
+  passwordHash String
+  driverName   String?
+  createdAt    DateTime @default(now())
+}
+
+model RoutePlan {
+  id                 String     @id @default(uuid())
+  startCity          String     @default("Casablanca")
+  summary            String
+  driverInstructions String
+  warnings           String     // JSON-serialized string or list representation
+  costEstimate       String
+  customerMessages   String     @default("[]") // JSON array of customer messages
+  createdAt          DateTime   @default(now())
+  deliveries         Delivery[]
+}
+
+model Delivery {
+  id              String     @id @default(uuid())
+  stop            String     // Target delivery address/zone
+  driverName      String     // Assigned chauffeur/driver name
+  estimatedTime   String
+  priority        String     // "High" | "Medium" | "Low"
+  customerName    String
+  phone           String
+  status          String     // "pending" | "dispatched" | "completed" | "delayed"
+  paymentMethod   String?    // e.g., "COD" or "Prepaid"
+  codAmount       String?    // e.g., "150 DH"
+  preferredTime   String?    // e.g., "09:00 - 12:00"
+  bonDeLivraison  String?    // Link, base64 data, or file photo path
+  routePlanId     String?
+  routePlan       RoutePlan? @relation(fields: [routePlanId], references: [id], onDelete: Cascade)
+  createdAt       DateTime   @default(now())
+}

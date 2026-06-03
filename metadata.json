@@ -1,0 +1,8 @@
+{
+  "name": "LogistiQ AI",
+  "description": "Intelligent logistics planner and dispatch assistant for SMEs in Morocco. Optimize routes, schedule drivers, and craft customer tracking messages in Darija, Arabic, and French.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

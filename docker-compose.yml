@@ -1,0 +1,25 @@
+# LogistiQ AI Docker Compose Service Orchestration
+version: "3.8"
+
+services:
+  logistiq-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: logistiq_ai_prod
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - JWT_SECRET=logistiq_production_secure_jwt_token_key_2026_ma
+      - DATABASE_URL=file:/app/database/dev.db
+      # The Gemini API Key is linked here; can be passed from host environment variables
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    # Persistence volume for SQLite dev.db state durability
+    volumes:
+      - db-persistence:/app/database
+
+volumes:
+  db-persistence:
