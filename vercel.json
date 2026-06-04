@@ -1,36 +1,4 @@
-[18:13, 31/03/2026] Taib: illingen
-[15:31, 01/04/2026] Taib: motor leonardo baqaa jdida makina 49cc darba 1000 km nli 3ando lgharad ha num 0659402225
-nli ma3andochi lgharad bla maysayfet 
-prix 10000 u kayn chi haja dl mofahama
-[23:49, 03/04/2026] Taib: mmmm dzo
-[18:06, 04/06/2026] Taib: {
-  "version": 2,
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "https://project-ji818.vercel.app/api/$1"
-    }
-  ]
-}
-[18:12, 04/06/2026] Taib: {
-  "version": 2,
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "https://project-ji818.vercel.app/api/$1"
-    }
-  ]
-}
-[18:20, 04/06/2026] Taib: {
-  "version": 2,
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    }
-  ]
-}
-[19:22, 04/06/2026] Taib: {
+{
   "version": 2,
   "builds": [
     {
