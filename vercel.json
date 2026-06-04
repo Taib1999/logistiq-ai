@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://project-ji818.vercel.app/api/$1"
+      "destination": "/api/$1"
     }
   ]
 }
